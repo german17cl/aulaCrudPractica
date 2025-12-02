@@ -19,6 +19,7 @@
                 <th class="py-3 px-4 border">Nombre</th>
                 <th class="py-3 px-4 border">Descripción</th>
                 <th class="py-3 px-4 border">Profesor</th>
+                <th class="py-3 px-4 border">Alumnos del curso</th>
                 <th class="py-3 px-4 border">Acciones</th>
             </tr>
         </thead>
@@ -29,23 +30,35 @@
                 <td class="py-3 px-4">{{ $course->id }}</td>
                 <td class="py-3 px-4">{{ $course->nombre }}</td>
                 <td class="py-3 px-4">{{ $course->descripcion }}</td>
+
                 <td class="py-3 px-4">
                     {{ $course->teacher ? $course->teacher->nombre : 'Sin profesor' }}
                 </td>
 
-                <td class="py-3 px-4 flex gap-3">
-                    <a href="{{ route('courses.show', $course->id) }}" class="text-blue-600 hover:underline">
-                        Ver
-                    </a>
+                <td class="py-3 px-4">
+                    
+                    <a href="{{ route('courses.students', $course->id) }}"class="text-indigo-600 hover:underline">Ver alumnos</a>
 
-                    <a href="{{ route('courses.edit', $course->id) }}" class="text-yellow-600 hover:underline">
-                        Editar
-                    </a>
+                </td>
 
-                    <a href="{{ route('courses.confirmDelete', $course->id) }}" 
-                       class="text-red-600 hover:underline">
-                        Eliminar
-                    </a>
+                <td class="py-3 px-4">
+                    <div class="flex gap-3">
+
+                        <a href="{{ route('courses.show', $course->id) }}"
+                           class="text-blue-600 hover:underline">
+                            Ver
+                        </a>
+
+                        <a href="{{ route('courses.edit', $course->id) }}"
+                           class="text-yellow-600 hover:underline">
+                            Editar
+                        </a>
+
+                        <a href="{{ route('courses.confirmDelete', $course->id) }}"
+                           class="text-red-600 hover:underline">
+                            Eliminar
+                        </a>
+                    </div>
                 </td>
             </tr>
             @endforeach

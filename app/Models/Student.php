@@ -21,4 +21,9 @@ class Student extends Model
     ];
 
     protected $hidden = [];
+
+    public function courses(){
+        return $this->belongsToMany(Course::class);
+    }
+
 }

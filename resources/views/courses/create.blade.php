@@ -34,11 +34,13 @@
             @endforeach
 
         </select>
+        
     </div>
 
     <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
         Crear Curso
-    </button>
+    </button> <a href="{{ route('courses.index') }}"
+           class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Volver a la lista</a>
 </form>
 
 @endsection

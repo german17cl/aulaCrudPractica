@@ -71,4 +71,13 @@ class CourseController extends Controller
         return redirect()->route('courses.index')
                          ->with('success', 'Curso eliminado correctamente');
     }
+
+    // Mostrar estudiantes inscritos en un curso 
+    public function students(Course $course){
+        // Si tienes relación Many to Many (course_student)
+        $students = $course->students;
+
+        return view('courses.students', compact('course', 'students'));
+    }
+
 }

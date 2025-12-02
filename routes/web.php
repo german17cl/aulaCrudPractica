@@ -25,6 +25,8 @@ Route::get('teachers/{teacher}/confirm-delete', [TeacherController::class, 'conf
 Route::resource('courses', CourseController::class);
 // Ruta de confirmación para eliminar curso
 Route::get('courses/{course}/confirm-delete', [CourseController::class, 'confirmDelete'])->name('courses.confirmDelete');
+Route::get('/courses/{course}/students', [CourseController::class, 'students'])->name('courses.students');
+
 
 
 require __DIR__.'/settings.php';
