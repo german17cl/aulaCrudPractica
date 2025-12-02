@@ -20,6 +20,7 @@
                 <th class="py-3 px-4 border">Descripción</th>
                 <th class="py-3 px-4 border">Profesor</th>
                 <th class="py-3 px-4 border">Alumnos del curso</th>
+                <th class="py-3 px-4 border">Matriculas</th>
                 <th class="py-3 px-4 border">Acciones</th>
             </tr>
         </thead>
@@ -40,8 +41,11 @@
                     <a href="{{ route('courses.students', $course->id) }}"class="text-indigo-600 hover:underline">Ver alumnos</a>
 
                 </td>
-
                 <td class="py-3 px-4">
+                    <a href=""> Matriculas</a>
+                </td>
+                <td class="py-3 px-4">
+
                     <div class="flex gap-3">
 
                         <a href="{{ route('courses.show', $course->id) }}"

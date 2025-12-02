@@ -15,7 +15,7 @@
     <main class="max-w-6xl mx-auto mt-8 p-6 bg-white shadow rounded-lg">
         @yield('content')
     </main>
-
+x
     {{-- Footer --}}
     @include('partials.footer')
 
