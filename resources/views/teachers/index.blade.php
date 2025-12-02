@@ -41,7 +41,7 @@
                     <a href="{{ route('teachers.edit', $teacher->id) }}"
                         class="text-white hover:bg-amber-300 p-2 bg-amber-400 px-2 rounded-lg">
 
-                        Editar
+                        Modificar
                     </a>
 
                     <a href="{{ route('teachers.confirmDelete', $teacher->id) }}" 
