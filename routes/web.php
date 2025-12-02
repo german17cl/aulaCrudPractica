@@ -27,6 +27,16 @@ Route::resource('courses', CourseController::class);
 Route::get('courses/{course}/confirm-delete', [CourseController::class, 'confirmDelete'])->name('courses.confirmDelete');
 Route::get('/courses/{course}/students', [CourseController::class, 'students'])->name('courses.students');
 
+// Matricular estudiantes
+Route::get('/courses/{course}/enroll', [CourseController::class, 'enroll'])
+    ->name('courses.enroll');
+
+// Guardado definitivo
+Route::post('/courses/{course}/enroll/update', [CourseController::class, 'updateEnroll'])
+    ->name('courses.enroll.update');
+
+
+
 
 
 require __DIR__.'/settings.php';

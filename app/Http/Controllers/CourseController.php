@@ -4,23 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Teacher;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    // Mostrar lista de cursos con paginación
     public function index() {
-        $courses = Course::with('teacher')->paginate(10); // Paginación 10 por página
+        $courses = Course::with('teacher')->paginate(10);
         return view('courses.index', compact('courses'));
     }
 
-    // Mostrar formulario de creación
     public function create() {
         $teachers = Teacher::all();
         return view('courses.create', compact('teachers'));
     }
 
-    // Guardar nuevo curso
     public function store(Request $request) {
         $data = $request->validate([
             'nombre' => 'required|string|max:255',
@@ -34,18 +32,15 @@ class CourseController extends Controller
                          ->with('success', 'Curso creado correctamente');
     }
 
-    // Mostrar detalles de un curso
     public function show(Course $course) {
         return view('courses.show', compact('course'));
     }
 
-    // Mostrar formulario de edición
     public function edit(Course $course) {
         $teachers = Teacher::all();
         return view('courses.edit', compact('course', 'teachers'));
     }
 
-    // Actualizar curso
     public function update(Request $request, Course $course) {
         $data = $request->validate([
             'nombre' => 'required|string|max:255',
@@ -59,12 +54,10 @@ class CourseController extends Controller
                          ->with('success', 'Curso actualizado correctamente');
     }
 
-    // Vista de confirmación antes de eliminar
     public function confirmDelete(Course $course) {
         return view('courses.confirm-delete', compact('course'));
     }
 
-    // Eliminar curso
     public function destroy(Course $course) {
         $course->delete();
 
@@ -72,12 +65,23 @@ class CourseController extends Controller
                          ->with('success', 'Curso eliminado correctamente');
     }
 
-    // Mostrar estudiantes inscritos en un curso 
-    public function students(Course $course){
-        // Si tienes relación Many to Many (course_student)
-        $students = $course->students;
+    // 👉 Nueva versión super simple
+    public function enroll(Course $course)
+    {
+        $students = Student::orderBy('id', 'asc')->get();
 
-        return view('courses.students', compact('course', 'students'));
+        // alumnos ya matriculados
+        $enrolled = $course->students()->pluck('students.id')->toArray();
+
+        return view('courses.enroll', compact('course', 'students', 'enrolled'));
     }
 
+    public function updateEnroll(Request $request, Course $course)
+    {
+        // Si no seleccionó nada, sincronizar vacío
+        $course->students()->sync($request->students ?? []);
+
+        return redirect()->route('courses.index')
+                         ->with('success', 'Matrículas actualizadas correctamente.');
+    }
 }

@@ -42,7 +42,11 @@
 
                 </td>
                 <td class="py-3 px-4">
-                    <a href=""> Matriculas</a>
+                    <a href="{{ route('courses.enroll', $course->id) }}" 
+                        class="text-indigo-600 hover:underline">
+                        Matrículas
+                    </a>
+
                 </td>
                 <td class="py-3 px-4">
 
