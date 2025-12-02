@@ -65,7 +65,7 @@ class CourseController extends Controller
                          ->with('success', 'Curso eliminado correctamente');
     }
 
-    // 👉 Nueva versión super simple
+    
     public function enroll(Course $course)
     {
         $students = Student::orderBy('id', 'asc')->get();
@@ -84,4 +84,13 @@ class CourseController extends Controller
         return redirect()->route('courses.index')
                          ->with('success', 'Matrículas actualizadas correctamente.');
     }
+
+        public function students(Course $course)
+    {
+        // Obtener todos los alumnos matriculados mediante la relación Many-to-Many
+        $students = $course->students;
+
+        return view('courses.students', compact('course', 'students'));
+    }
+
 }

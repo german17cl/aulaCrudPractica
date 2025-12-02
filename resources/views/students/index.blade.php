@@ -3,11 +3,11 @@
 
 @section('content')
 
-<h1 class="text-2xl font-bold mb-6">Lista de Estudiantes</h1>
+<h1 class="text-3xl font-bold mb-5">Lista de Estudiantes</h1>
 
 <a href="{{ route('students.create') }}"
-   class="inline-block mb-4 bg-blue-950 text-white px-4 py-2 rounded hover:bg-blue-700">
-    + Nuevo estudiante
+   class="inline-block mb-4 bg-blue-950 text-white px-4 py-2 rounded-lg hover:bg-blue-900">
+    Nuevo estudiante
 </a>
 
 <div class="overflow-x-auto">
@@ -25,16 +25,31 @@
 
         <tbody>
             @foreach($students as $student)
-            <tr class="hover:bg-gray-50">
+            <tr class="hover:bg-gray-50 border-b">
                 <td class="px-4 py-2 border">{{ $student->id }}</td>
                 <td class="px-4 py-2 border">{{ $student->nombre }}</td>
                 <td class="px-4 py-2 border">{{ $student->edad }}</td>
                 <td class="px-4 py-2 border">{{ $student->telefono }}</td>
                 <td class="px-4 py-2 border">{{ $student->direccion }}</td>
                 <td class="px-4 py-2 border space-x-3">
-                    <a href="{{ route('students.show', $student->id) }}" class="text-blue-600 hover:underline">Ver</a>
-                    <a href="{{ route('students.edit', $student->id) }}" class="text-yellow-600 hover:underline">Editar</a>
-                    <a href="{{ route('students.confirmDelete', $student->id) }}" class="text-red-600 hover:underline">Eliminar</a>
+                
+                <div class="flex gap-3">
+
+                    <a href="{{ route('students.show', $student->id) }}" 
+                        class="text-white hover:bg-blue-900 p-2 bg-blue-950 px-2 rounded-lg">
+                        Ver
+                    </a>
+                    
+                    <a href="{{ route('students.edit', $student->id) }}" 
+                        class="text-white hover:bg-amber-300 p-2 bg-amber-400 px-2 rounded-lg">
+                        Editar
+                    </a>
+                
+                    <a href="{{ route('students.confirmDelete', $student->id) }}" 
+                        class="text-white hover:bg-red-800 p-2 bg-red-900 px-2 rounded-lg ">
+                        Eliminar
+                    </a>
+                 </div>
                 </td>
             </tr>
             @endforeach

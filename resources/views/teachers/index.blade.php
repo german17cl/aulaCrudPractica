@@ -7,7 +7,7 @@
 <h1 class="text-3xl font-bold mb-5">Lista de Profesores</h1>
 
 <a href="{{ route('teachers.create') }}" 
-   class="inline-block mb-4 bg-blue-950 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+   class="inline-block mb-4 bg-blue-950 text-white px-4 py-2 rounded-lg hover:bg-blue-900">
     Nuevo Profesor
 </a>
 
@@ -33,16 +33,19 @@
                 <td class="py-3 px-4">{{ $teacher->grado }}</td>
                 <td class="py-3 px-4">{{ $teacher->telefono }}</td>
                 <td class="py-3 px-4 flex gap-3">
-                    <a href="{{ route('teachers.show', $teacher->id) }}" class="text-blue-600 hover:underline">
+                    <a href="{{ route('teachers.show', $teacher->id) }}" 
+                      class="text-white hover:bg-blue-900 p-2 bg-blue-950 px-2 rounded-lg"> 
                         Ver
                     </a>
 
-                    <a href="{{ route('teachers.edit', $teacher->id) }}" class="text-yellow-600 hover:underline">
+                    <a href="{{ route('teachers.edit', $teacher->id) }}"
+                        class="text-white hover:bg-amber-300 p-2 bg-amber-400 px-2 rounded-lg">
+
                         Editar
                     </a>
 
                     <a href="{{ route('teachers.confirmDelete', $teacher->id) }}" 
-                       class="text-red-600 hover:underline">
+                       class="text-white hover:bg-red-800 p-2 bg-red-900 px-2 rounded-lg">
                         Eliminar
                     </a>
                 </td>

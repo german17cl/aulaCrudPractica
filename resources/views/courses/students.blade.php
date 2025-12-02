@@ -23,7 +23,11 @@
             <tr>
                 <th class="py-3 px-4 border">ID</th>
                 <th class="py-3 px-4 border">Nombre</th>
-                <th class="py-3 px-4 border">Email</th>
+                <th class="py-3 px-4 border">Teléfono</th>
+                <th class="py-3 px-4 border">Edad</th>
+                <th class="py-3 px-4 border">Dirección</th>
+
+                
             </tr>
         </thead>
 
@@ -32,7 +36,9 @@
             <tr class="border-b hover:bg-gray-100">
                 <td class="py-3 px-4">{{ $student->id }}</td>
                 <td class="py-3 px-4">{{ $student->nombre }}</td>
-                <td class="py-3 px-4">{{ $student->email }}</td>
+                <td class="py-3 px-4">{{ $student->telefono }}</td>
+                <td class="py-3 px-4">{{ $student->edad }}</td>
+                <td class="py-3 px-4">{{ $student->direccion }}</td>
             </tr>
             @endforeach
         </tbody>
