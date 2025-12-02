@@ -13,7 +13,6 @@
 <div class="overflow-x-auto">
     <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
         <thead class="bg-blue-950 text-white">
-            <p>Hola</p>
             <tr>
                 <th class="px-3 py-4 border">ID</th>
                 <th class="px-3 py-4 border">Nombre</th>
