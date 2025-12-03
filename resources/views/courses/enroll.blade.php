@@ -17,6 +17,13 @@
     @csrf
 
     <div class="bg-white shadow-md rounded-lg p-5">
+        <input 
+            type="text" 
+            id="searchStudent" 
+            placeholder="Buscar alumno por nombre o ID..." 
+            class="mb-4 w-full px-4 py-2 border border-gray-600 rounded-lg"
+        />
+
         <table class="min-w-full bg-white">
             <thead class="bg-blue-950 text-white">
                 <tr>
@@ -53,5 +60,24 @@
         Guardar Matrículas
     </button>
 </form>
+
+<script>
+document.getElementById("searchStudent").addEventListener("keyup", function () {
+    let filter = this.value.toLowerCase();
+    let rows = document.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+        let id = row.children[1].innerText.toLowerCase();
+        let nombre = row.children[2].innerText.toLowerCase();
+
+        if (id.includes(filter) || nombre.includes(filter)) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    });
+});
+</script>
+
 
 @endsection
